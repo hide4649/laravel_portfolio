@@ -1,0 +1,59 @@
+.card-body{
+  padding:0px;
+}
+
+
+.userimage{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.postimg{
+
+  width:800px; 
+  height:400px;
+}
+
+.tag{
+  font-size: 15px;
+  padding: 1px 6px;
+  border-radius: 30%;
+}
+
+
+@media (min-width: 992px){ 
+  .containr-fluid{
+    margin: 0px 200px 50px 200px;
+  }
+}
+
+@media (max-width: 992px) { 
+  .containr-fluid{
+    margin: 0px 25px 50px 25px;
+  }
+}
+
+@media (max-width: 768px) { 
+  .containr-fluid{
+    margin: 0px 40px 50px 40px;
+  }
+  .postimg{
+    width:400px; 
+    height:200px;
+  }
+}
+
+@media(max-width:470px){
+  .alert{
+    font-size: 13px !important;
+    padding: 0.5rem !important;
+  }
+}
+
+@media(max-width:400px){
+  .alert{
+    font-size: 11px !important;
+    padding: 0.5rem !important;
+  }
+}
