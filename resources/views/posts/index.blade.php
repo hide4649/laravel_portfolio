@@ -12,7 +12,12 @@
   
   <div class="text-center">
     <h1>みんなのツミアゲ</h1> 
+    @isset($search_result)
+    <h3>{{ $search_result }}</h3> 
+    @endisset
   </div>
+  
+
   <div class="text-right">
   <div class="dropdown mb-4">
     <button class="btn btn-light dropdown-toggle mt-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,11 +75,11 @@
   </div>
 </div>
 
-   @isset($posts)
+   {{-- @isset($posts)
        
     <div class="d-flex justify-content-center mt-5">
       {{ $posts->links() }}
     </div>
 
-   @endisset
+   @endisset --}}
 @endsection

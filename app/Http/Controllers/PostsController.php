@@ -11,7 +11,7 @@ class PostsController extends Controller
 {
     
     public function index(){
-        $posts = Post::paginate(10);
+        $posts = Post::paginate(1);
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -117,6 +117,14 @@ class PostsController extends Controller
          return redirect('/');
     }
 
-    
+    public function search(Request $request){
+        // dd($request->search);
+        $search = $request->search;
+        $posts = Post::select('id','title','image')->where('title','like',"%{$search}%")->orWhere('body','like',"%{$search}%")->paginate(2);
+
+        $search_result = '「'.$search.'」'.'の検索結果'.$posts->total().'件';
+
+        return view('posts.index',compact('posts','search_result','search'));
+    }
 
 }

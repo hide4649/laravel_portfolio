@@ -22,10 +22,11 @@ Route::delete('/posts/{post}', 'PostsController@destroy')->name('delete');
 Route::get('/users/{user}', 'UserController@mypage')->where('user', '[0-9]+')->name('mypage');
 Route::get('/users/{user}/editprofile', 'UserController@editprofile')->where('user', '[0-9]+')->name('editprofile');
 Route::patch('/user/{user}/', 'UserController@profileUpdate')->where('user', '[0-9]+')->name('profileUpdate');
-Route::get('/posts', 'PostsController@post')->name('post');
-Route::get('categories/html', 'CategoriesController@html')->name('html');
-Route::get('categories/css', 'CategoriesController@css')->name('css');
-Route::get('categories/js', 'CategoriesController@js')->name('js');
+Route::get('/posts/post', 'PostsController@post')->name('post');
+Route::get('/categories/html', 'CategoriesController@html')->name('html');
+Route::get('/categories/css', 'CategoriesController@css')->name('css');
+Route::get('/posts/search', 'PostsController@search')->name('search');
+Route::get('/categories/js', 'CategoriesController@js')->name('js');
 Auth::routes(['verify' => 'true']);
 Route::get('/home', 'HomeController@index')->name('home');
 
