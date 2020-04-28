@@ -16,19 +16,19 @@ class PostsTableSeeder extends Seeder
             [
                 'user_id' => 1,
                 'category_id' => 1,
-                'title' => 'hoge',
-                'body' => 'test'
+                'title' => 'hoge1',
+                'body' => 'test1'
             ],
             [
-                'user_id' => 1,
+                'user_id' => 2,
                 'category_id' => 1,
-                'title' => 'hoge',
+                'title' => 'hoge2',
                 'body' => 'test2'
             ],
             [
-                'user_id' => 1,
+                'user_id' => 3,
                 'category_id' => 1,
-                'title' => 'hoge',
+                'title' => 'hoge3',
                 'body' => 'test3'
             ]
         
