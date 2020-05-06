@@ -49,7 +49,7 @@
                   @endif
 
                   <div class="card-body">
-                    <p class="card-text">{{ $post->title }}</p>
+                    <p class="card-text">{{ Illuminate\Support\Str::limit($post->title, 20, '(...)') }}</p>
                   </div>
                 </div>
               </div>

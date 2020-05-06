@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'PostsController@index');
+Route::post('/posts/{post}/comments', 'CommentsController@store')->where('post', '[0-9]+');
 Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+')->name('show');
 Route::get('/posts/{post}/editpost', 'PostsController@editpost')->where('post', '[0-9]+')->name('editpost');
-Route::post('/posts/{post}/comments', 'CommentsController@store')->where('post', '[0-9]+');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->where('post', '[0-9]+');
 Route::post('/posts', 'PostsController@store')->name('store');
 Route::patch('/posts/{post}', 'PostsController@update')->where('post', '[0-9]+')->name('postUpdate');

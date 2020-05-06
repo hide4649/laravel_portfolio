@@ -17,7 +17,7 @@
     @endisset
   </div>
   
-
+  @if(!isset($search_result))
   <div class="text-right">
   <div class="dropdown mb-4">
     <button class="btn btn-light dropdown-toggle mt-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +30,7 @@
     </div>
   </div>
   </div>  
+  @endif
     
  
 
@@ -53,8 +54,8 @@
 
               @endif
 
-              <div class="card-body">
-                <p class="card-text">{{ $post->title }}</p>
+              <div class="card-body mx-2 text-center">
+                <p class="card-text">{{ Illuminate\Support\Str::limit($post->title, 20, '(...)') }}</p>
               </div>
             </div>
           </div> 
@@ -75,11 +76,11 @@
   </div>
 </div>
 
-   {{-- @isset($posts)
-       
-    <div class="d-flex justify-content-center mt-5">
-      {{ $posts->links() }}
-    </div>
+   @if (!empty($posts))
+      
+   <div class="d-flex justify-content-center mt-5">
+     {{ $posts->links() }}
+   </div>
 
-   @endisset --}}
+   @endif
 @endsection
