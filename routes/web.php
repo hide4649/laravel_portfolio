@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'PostsController@index');
+Route::post('/posts/{post}/comments', 'CommentsController@store')->where('post', '[0-9]+');
+Route::post('/posts/search', 'PostsController@search')->name('search');
 Route::get('/posts/{post}', 'PostsController@show')->where('post', '[0-9]+')->name('show');
 Route::get('/posts/{post}/editpost', 'PostsController@editpost')->where('post', '[0-9]+')->name('editpost');
-Route::post('/posts/{post}/comments', 'CommentsController@store')->where('post', '[0-9]+');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy')->where('post', '[0-9]+');
 Route::post('/posts', 'PostsController@store')->name('store');
 Route::patch('/posts/{post}', 'PostsController@update')->where('post', '[0-9]+')->name('postUpdate');
@@ -25,7 +26,6 @@ Route::patch('/user/{user}/', 'UserController@profileUpdate')->where('user', '[0
 Route::get('/posts/post', 'PostsController@post')->name('post');
 Route::get('/categories/html', 'CategoriesController@html')->name('html');
 Route::get('/categories/css', 'CategoriesController@css')->name('css');
-Route::get('/posts/search', 'PostsController@search')->name('search');
 Route::get('/categories/js', 'CategoriesController@js')->name('js');
 Auth::routes(['verify' => 'true']);
 Route::get('/home', 'HomeController@index')->name('home');

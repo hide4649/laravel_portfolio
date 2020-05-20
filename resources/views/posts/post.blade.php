@@ -57,7 +57,7 @@
  
   
     <div class="form-group">
-      <label class="mt-3" for="exampleInputEmail1">タイトル(255文字以内)   :</label>
+      <label class="mt-3" for="exampleInputEmail1">タイトル(50文字以内)   :</label>
       <div class="form-row">
         <div class="form-group col-sm-12  col-md-8 col-lg-9">
           
@@ -93,7 +93,7 @@
     <div class="form-group">
       <label for="validationTextarea">本文:</label>
       
-      <textarea name="body" class="form-control textarea" id="form-control" placeholder="本文を入力してください" required>{{ old('body') }}</textarea>
+      <textarea name="body" class="form-control textarea" id="form-control" placeholder="本文を入力してください">{{ old('body') }}</textarea>
 
       
     </div>

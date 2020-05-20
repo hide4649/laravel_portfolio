@@ -85,7 +85,7 @@
               </div>
             </div>
             <p class="card-text my-3 mx-2">
-              {{ $post->body }}
+              {{ nl2br(e($post->body)) }}
             </p>
           </div>
         </div>
@@ -125,7 +125,7 @@
               </div>
             </div>
             <div class="col-12 ml-5">
-              <p>{{ $comment->body}}</p>   
+              <p>{{ nl2br(e($comment->body)) }}</p>   
             </div>
             @empty
             <div >
@@ -143,11 +143,11 @@
               <h5 >コメント記入</h5>
             </div>
             <div class="card-body bg-light">
-              <form method="post" action="{{ action('CommentsController@store', $post)}}">
+              <form method="POST" action="{{ action('CommentsController@store', $post)}}">
                 {{ csrf_field() }}
                 <div class="form-group">
                   <label for="validationTextarea">コメント(100字以内)  :</label>
-                  <textarea name='body' class="form-control textarea pb-3" id="form-control" placeholder="コメントを入力してください" value="{{ old('body') }}"></textarea>
+                  <textarea name="body" class="form-control textarea pb-3" id="form-control" placeholder="コメントを入力してください" value="{{ old('body') }}"></textarea>
                   <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                 </div>
 
@@ -197,7 +197,7 @@
                   </div>
                 </div>
                 <div class="col-12 ml-5">
-                  <p>{{ $comment->body}}</p>   
+                  <p>{{ nl2br(e($comment->body)) }}</p>   
                 </div>
 
               @endforeach
@@ -208,43 +208,14 @@
       </div>
   
       <div class="col-sm-12 col-md-4">
-        <div class="card">
-          <div class="card-header text-center">
-          <h6>{{ $post->user->name}}さんのその他の投稿</h6>
-          </div>
-          @foreach($randoms as $random)
-          <div class="col-12">
-            <div class="card">
 
-              @if($random->image)
-              <a href="{{ route('show',$random) }}">
-                <img src="{{ asset('/storage/image/'.$random->image) }}" alt="" class="card-img-top" width="10%" height="180">
-              </a>
-              
-              @else
-
-              <a href="{{ route('show',$random) }}">
-                <img src="{{ asset('/img/noimage.png') }}" alt="" class=" card-img-top" width="100%" height="180">
-              </a>
-              @endif
-
-              <div class="card-body">
-                <p class="card-text">{{ $random->title }}</p>
-              </div>
-            </div>
-          </div> 
-          @endforeach
-        </div>
-  
-
-        
-        <div class="card mt-5">
-          <div class="card-header text-center">
+        <div class="card mx-2 text-center">
+          <div class="card-header ">
             <h6>{{ $post->user->name}}さんの新着投稿</h6>
           </div>
           
           @foreach($orderbys as $orderby)
-          <div class="col-12">
+          <div class="col-12 my-2">
             <div class="card">
 
               @if($orderby->image)
@@ -260,12 +231,41 @@
               @endif
 
               <div class="card-body">
-                <p class="card-text">{{ $orderby->title }}</p>
+                <p class="card-text">{{ Illuminate\Support\Str::limit($orderby->title, 10, '(...)') }}</p>
               </div>
             </div>
           </div> 
           @endforeach
         </div>
+
+        <div class="card mt-5 mx-2">
+          <div class="card-header text-center">
+          <h6>{{ $post->user->name}}さんのその他の投稿</h6>
+          </div>
+          @foreach($randoms as $random)
+          <div class="col-12 my-2 ">
+            <div class="card">
+
+              @if($random->image)
+              <a href="{{ route('show',$random) }}">
+                <img src="{{ asset('/storage/image/'.$random->image) }}" alt="" class="card-img-top" width="10%" height="180">
+              </a>
+              
+              @else
+
+              <a href="{{ route('show',$random) }}">
+                <img src="{{ asset('/img/noimage.png') }}" alt="" class=" card-img-top" width="100%" height="180">
+              </a>
+              @endif
+
+              <div class="card-body mx-2 my-2">
+                <p class="card-text">{{ Illuminate\Support\Str::limit($random->title, 10, '(...)') }}</p>
+              </div>
+            </div>
+          </div> 
+          @endforeach
+        </div>
+
       </div>
     
     </div> 

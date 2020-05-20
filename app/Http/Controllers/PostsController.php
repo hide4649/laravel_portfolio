@@ -7,11 +7,12 @@ use App\Comment;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 
+
 class PostsController extends Controller
 {
     
     public function index(){
-        $posts = Post::paginate(1);
+        $posts = Post::paginate(3);
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -120,7 +121,7 @@ class PostsController extends Controller
     public function search(Request $request){
         // dd($request->search);
         $search = $request->search;
-        $posts = Post::select('id','title','image')->where('title','like',"%{$search}%")->orWhere('body','like',"%{$search}%")->paginate(2);
+        $posts = Post::select('id','title','image')->where('title','like',"%{$search}%")->orWhere('body','like',"%{$search}%")->paginate(3);
 
         $search_result = '「'.$search.'」'.'の検索結果'.$posts->total().'件';
 

@@ -9,7 +9,7 @@ use App\Http\Requests\PostRequest;
 
 class CommentsController extends Controller
 {
-    public function store(PostRequest $request, Post $post){
+    public function store(Request $request, Post $post){
         $comment = new Comment;
         $comment->body = $request->body;
         $comment->user_id = $request->user_id;

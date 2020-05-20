@@ -63,8 +63,9 @@
 
         @endauth
       </ul>
-      <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('search') }}">
-        <input class="form-control mr-sm-2" type="text" name="search" placeholder="入力してください" aria-label="Search">
+      <form method="post" action="{{ route('search')}}"class="form-inline my-2">
+        {{ csrf_field() }}
+        <input type="text" class="form-control mr-sm-2" name="search" value="" placeholder="入力してください" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
